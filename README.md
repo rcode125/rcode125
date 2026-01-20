@@ -3,7 +3,9 @@
 # Visit our Searchengine Nexora! Create Pull Requests
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rcode125&layout=compact&langs_count=6&theme=dark)
-<img src="https://github-readme-stats.vercel.app/api?username=rcode125&show_icons=true&theme=radical&include_all_commits=true">
+<br>
+# My Stats on Github
+<img src="https://github-readme-stats.vercel.app/api?username=rcode125&show_icons=true&include_all_commits=true">
 
 
 
