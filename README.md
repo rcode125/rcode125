@@ -5,7 +5,7 @@
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rcode125&layout=compact&langs_count=6&theme=dark)
 <br>
 # My Stats on Github
-<img src="https://github-readme-stats.vercel.app/api?username=rcode125&show_icons=true&include_all_commits=true">
+<img src="https://github-readme-stats.vercel.app/api?username=rcode125&show_icons=true&include_all_commits=true&theme=dark">
 
 
 
