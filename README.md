@@ -1,5 +1,8 @@
 ## Hi there 👋
 
+# Visit our Searchengine Nexora! Create Pull Reqests
+
+![Metrics](https://github.com/DEIN_USERNAME/DEIN_USERNAME/blob/main/github-metrics.svg)
 <!--
 **rcode125/rcode125** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
