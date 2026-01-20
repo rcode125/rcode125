@@ -1,8 +1,11 @@
 ## Hi there 👋
 
-# Visit our Searchengine Nexora! Create Pull Reqests
+# Visit our Searchengine Nexora! Create Pull Requests
+
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rcode125&layout=compact&langs_count=6&theme=dark)
+
 ![Metrics](https://github.com/rcode125/rcode125/blob/main/github-metrics.svg)
+
 <!--
 **rcode125/rcode125** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
