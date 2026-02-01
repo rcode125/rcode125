@@ -32,17 +32,9 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
         run: node scripts/generate-3d-contrib.js
 
-      - name: Commit and push changes
-        env:
-          GIT_AUTHOR_NAME: "github-actions[bot]"
-          GIT_AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
-        run: |
-          git config --local user.email "$GIT_AUTHOR_EMAIL"
-          git config --local user.name "$GIT_AUTHOR_NAME"
-          git add profile-3d-contrib/profile-green-animate.svg || true
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update 3D contribution visualization"
-            git push
-          fi
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+            token: ${{ secrets.GH_PAT }}
+
