@@ -1,0 +1,44 @@
+name: Generate 3D Contribution Visualization
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allow manual trigger
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install axios svg-builder
+        # Or use: pip install pillow requests (for Python)
+
+      - name: Generate 3D contribution graph
+        run: node scripts/generate-3d-contrib.js
+        # Or: python scripts/generate_3d_contrib.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add profile-3d-contrib/profile-green-animate.svg
+          git commit -m "chore: update 3D contribution visualization" || true
+          git push
