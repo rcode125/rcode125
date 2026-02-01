@@ -2,9 +2,8 @@ name: Generate 3D Contribution Visualization
 
 on:
   schedule:
-    # Run daily at midnight UTC
     - cron: '0 0 * * *'
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -12,7 +11,7 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,20 +24,25 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install axios svg-builder
-        # Or use: pip install pillow requests (for Python)
+        run: npm install axios
 
       - name: Generate 3D contribution graph
-        run: node scripts/generate-3d-contrib.js
-        # Or: python scripts/generate_3d_contrib.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GITHUB_ACTOR: ${{ github.actor }}
+        run: node scripts/generate-3d-contrib.js
 
       - name: Commit and push changes
+        env:
+          GIT_AUTHOR_NAME: "github-actions[bot]"
+          GIT_AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add profile-3d-contrib/profile-green-animate.svg
-          git commit -m "chore: update 3D contribution visualization" || true
-          git push
+          git config --local user.email "$GIT_AUTHOR_EMAIL"
+          git config --local user.name "$GIT_AUTHOR_NAME"
+          git add profile-3d-contrib/profile-green-animate.svg || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update 3D contribution visualization"
+            git push
+          fi
